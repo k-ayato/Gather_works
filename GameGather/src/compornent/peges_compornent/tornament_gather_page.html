@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Gather</title>
-    <link rel="stylesheet" href="recruit_page.css">
+    <link rel="stylesheet" href="./tornament_gather_page.css">
 </head>
 
 <body>
@@ -39,12 +39,29 @@
             <div class="condition_containar">
                 <label for="quest">クエスト</label>
                 <input type="text" name="quest">
-                <br>
                 <label for="number">人数</label>
                 <input type="number" min="1" max="30" step="1" name="number">
-                <br>
-                <label for="event-time">時間</label>
-                <input type="time" id="event-time" name="event-time">
+                <div class="col">
+                    <label for="date">日付</label>
+                    <input type="date" id="date" name="date">
+                    <label for="event-time">時間</label>
+                    <input type="time" id="event-time" name="event-time">
+                </div>
+                <label for="tag">タグ</label>
+                <div class="tag-container">
+                    <button class="tag-button active">初心者</button>
+                    <button class="tag-button">中級者</button>
+                    <button class="tag-button">上級者</button>
+                    <button class="tag-button">気軽に</button>
+                    <button class="tag-button">ガチンコ</button>
+                    <button class="tag-button">ライブ配信</button>
+                    <button class="tag-button">通話あり</button>
+                    <button class="tag-button">周回</button>
+                    <button class="tag-button">初心者歓迎</button>
+                    <button class="tag-button">PC限定</button>
+                    <button class="tag-button">CS限定</button>
+                    <button class="tag-button">男子禁制</button>
+                </div>
             </div>
             <div class="buttun">
                 <button>募集</button>
@@ -54,6 +71,7 @@
         </div>
     </div>
     <script src="../peges_ts_comrnent/iconslider.js"></script>
+    <script src="../peges_ts_comrnent/tag_button.js"></script>
 </body>
 
 </html>

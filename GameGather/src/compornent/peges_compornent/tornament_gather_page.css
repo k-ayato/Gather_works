@@ -66,10 +66,13 @@ body {
 /* 中央カラム (メインコンテンツ) */
 .center-column {
     flex-grow: 1;
-    padding: 30px;
+    padding: 20px;
+    /* 上下のpaddingを少し調整 */
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    gap: 20px;
+    /* パーツ間の余白を一括で設定 */
+    /* overflow-y: auto; を削除 */
 }
 
 /* 右カラム */
@@ -150,12 +153,21 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
+    /* 各入力項目間の余白を少し調整 */
     font-size: 1.1rem;
-    /* 文字色を親要素から継承するので変更不要 */
     color: inherit;
+    flex-grow: 1;
+    /* ★この要素が余白を埋めるように伸びる */
+    overflow-y: auto;
+    /* ★コンテンツが多い場合はこのエリアだけスクロール */
+    justify-content: center;
+    /* 中の要素を垂直方向に中央寄せ */
+    padding: 10px;
+    /* スクロールバーとの余白を確保 */
 }
 
+.condition_containar input[type="date"],
 .condition_containar input[type="number"],
 .condition_containar input[type="text"],
 .condition_containar input[type="time"] {
@@ -172,14 +184,21 @@ body {
     color: #e0e0e0;
 }
 
+.col {
+    display: flex;
+    gap: 20px;
+}
+
 .condition_containar label {
     margin-right: 10px;
 }
 
 /* 募集ボタン */
 .buttun {
-    margin-top: 40px;
+    /* margin-top: 40px; を削除 (親要素のgapで管理) */
     text-align: center;
+    flex-shrink: 0;
+    /* ボタンが縮まないように設定 */
 }
 
 .buttun button {
@@ -200,4 +219,63 @@ body {
 .buttun button:hover {
     background-color: #218838;
     transform: translateY(-2px);
+}
+
+/* タグのコンテナ */
+.tag-container {
+    display: flex;
+    /* 横並びに配置 */
+    flex-wrap: wrap;
+    /* 要素がはみ出たら折り返す */
+    gap: 10px 12px;
+    /* タグ間の隙間 (上下 左右) */
+    justify-content: center;
+    /* 中央揃え */
+    max-width: 500px;
+    /* 最大幅を設定 */
+    margin-top: 10px;
+    /* 上のラベルとの余白 */
+}
+
+/* タグボタンの基本スタイル (ダークモード対応) */
+.tag-button {
+    padding: 8px 16px;
+    border: 1px solid #007bff;
+    /* 枠線の色をアクセントカラーに */
+    border-radius: 20px;
+    background-color: transparent;
+    /* 背景は透明に */
+    color: #007bff;
+    /* 文字色をアクセントカラーに */
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+    /* スマホでのタップ時のハイライトを消す */
+}
+
+/* マウスが乗った時のスタイル */
+.tag-button:hover {
+    background-color: rgba(0, 123, 255, 0.15);
+    /* アクセントカラーの薄い色 */
+    transform: translateY(-2px);
+    /* 少し浮き上がる効果 */
+}
+
+/* 選択されている (active) 時のスタイル */
+.tag-button.active {
+    background-color: #007bff;
+    /* 背景をアクセントカラーで塗りつぶす */
+    color: #ffffff;
+    /* 文字色を白に */
+    border-color: #007bff;
+    /* 枠線も同じ色に */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+/* フォーカス時のアウトライン（任意） */
+.tag-button:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
 }
