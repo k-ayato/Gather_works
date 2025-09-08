@@ -1,0 +1,203 @@
+@import url(../../assets/_variables.css);
+
+/* ===============
+   全体設定
+   =============== */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Sans', 'Noto Sans CJK JP', 'Yu Gothic', Meiryo, sans-serif;
+    margin: 0;
+    /* ダークモードの基本背景色 */
+    background-color: #1f1f1f;
+    /* ダークモードの基本文字色 */
+    color: #e0e0e0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 全ての要素でborderとpaddingの計算を簡単に */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ===============
+   3カラムレイアウト
+   =============== */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* 左カラム (ナビゲーション) */
+.left-column {
+    width: 90px;
+    /* カラムの背景色を暗くする */
+    background-color: #2d2d2d;
+    /* 境界線を暗い色に変更 */
+    border-right: 1px solid #3c3c3c;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+    flex-shrink: 0;
+}
+
+.left_top-column,
+.left_bottom-column {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.left-column img {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    /* 暗い背景で黒いアイコンを見えるようにする (不要な場合は削除) */
+    filter: invert(90%) sepia(5%) saturate(95%) hue-rotate(175deg) brightness(90%) contrast(85%);
+}
+
+.left-column img:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* 中央カラム (メインコンテンツ) */
+.center-column {
+    flex-grow: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* 右カラム */
+.right-column {
+    width: 300px;
+    /* カラムの背景色を暗くする */
+    background-color: #2d2d2d;
+    /* 境界線を暗い色に変更 */
+    border-left: 1px solid #3c3c3c;
+    flex-shrink: 0;
+}
+
+/* ===============
+   中央カラムの各パーツ
+   =============== */
+
+/* ゲームアイコンスライダー */
+.icons_slider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 30px;
+    overflow: hidden;
+    position: relative;
+    cursor: grab;
+    user-select: none;
+}
+
+.icons_slider.active {
+    cursor: grabbing;
+}
+
+.icons_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* スクロールバーのスタイル（任意） */
+.icons_slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.icons_slider::-webkit-scrollbar-thumb {
+    /* スクロールバーの色を少し明るく */
+    background: #4f4f4f;
+    border-radius: 4px;
+}
+
+.icons {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid transparent;
+    opacity: 0.4;
+    transform: scale(0.8);
+    transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
+}
+
+.icons:hover {
+    /* ホバー時の挙動は変更なし */
+    transform: scale(1.05);
+}
+
+/* 選択されたアイコンのスタイル (アクセントカラーはそのまま) */
+.icons.selected {
+    opacity: 1;
+    transform: scale(1);
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+
+/* 募集条件の入力欄 */
+.condition_containar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.1rem;
+    /* 文字色を親要素から継承するので変更不要 */
+    color: inherit;
+}
+
+.condition_containar input[type="number"],
+.condition_containar input[type="text"],
+.condition_containar input[type="time"] {
+    padding: 12px;
+    /* 入力欄の境界線を暗い色に */
+    border: 1px solid #555555;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 400px;
+    /* 入力欄の背景色を暗く */
+    background-color: #3c3c3c;
+    /* 入力文字の色を明るく */
+    color: #e0e0e0;
+}
+
+.condition_containar label {
+    margin-right: 10px;
+}
+
+/* 募集ボタン */
+.buttun {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.buttun button {
+    /* ボタンの色はアクセントなので変更なし */
+    background-color: #28a745;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    /* 影を少し調整 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.buttun button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}

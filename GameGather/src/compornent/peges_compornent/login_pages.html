@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>ログイン</h1>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" name="email" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">パスワード</label>
+                <div class="password-field">
+                    <input type="password" id="password" name="password" placeholder="パスワードを入力" required>
+                    <span class="password-toggle" onclick="togglePassword()">👁</span>
+                </div>
+            </div>
+
+            <div class="forgot-password">
+                <a href="#" onclick="showMessage('パスワードリセットメールを送信しました')">パスワードを忘れた方</a>
+            </div>
+
+            <button type="submit" class="login-btn">
+                <span class="btn-text">ログイン</span>
+                <div class="loading"></div>
+            </button>
+        </form>
+
+        <div class="signup-link">
+            アカウントをお持ちでない方は <a href="#" onclick="showMessage('新規登録ページに移動します')">新規登録</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
