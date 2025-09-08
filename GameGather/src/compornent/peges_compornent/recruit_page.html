@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Gather</title>
     <link rel="stylesheet" href="recruit_page.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <div class="container">
         <div class="left-column">
             <div class="left_top-column">
-                <img src="../../assets/icons/home_hoso.svg" height="30px" align="center"
-                    style="display: block; margin: auto;" class="home_icon">
-                <img src="../../assets/icons/sarch_icon.svg" height="30px" align="center"
-                    style="display: block; margin: auto;" class="sarch_icon">
-                <img src="../../assets/icons/messege_icon.svg" height="30px" align="center"
-                    style="display: block; margin: auto;" class="messege_icon">
+                <img src="../../assets/icons/home_hoso.svg" height="30px" style="display: block; margin: auto;" class="home_icon">
+                <img src="../../assets/icons/sarch_icon.svg" height="30px" style="display: block; margin: auto;" class="sarch_icon">
+                <img src="../../assets/icons/messege_icon.svg" height="30px" style="display: block; margin: auto;" class="messege_icon">
             </div>
             <div class="left_bottom-column">
-                <img src="../../assets/icons/man_icon.svg" height="80px" align="center"
-                    style="display: block; margin: auto;" class="profile_icon">
-                <img src="../../assets/icons/set_icon.svg" height="30px" align="center"
-                    style="display: block; margin: auto;" class="setting_icon">
+                <img src="../../assets/icons/man_icon.svg" height="80px" style="display: block; margin: auto;" class="profile_icon">
+                <img src="../../assets/icons/set_icon.svg" height="30px" style="display: block; margin: auto;" class="setting_icon">
             </div>
         </div>
         <div class="center-column">
@@ -47,13 +44,47 @@
                 <input type="time" id="event-time" name="event-time">
             </div>
             <div class="buttun">
-                <button>募集</button>
+                <button id="recruit-btn">募集</button>
             </div>
         </div>
         <div class="right-column">
         </div>
     </div>
     <script src="../peges_ts_comrnent/iconslider.js"></script>
+    <script>
+        // 募集ボタンがクリックされたときの処理
+        document.getElementById('recruit-btn').onclick = function() {
+            // 1. 入力値（クエスト名・人数・時間）を取得
+            const quest = document.querySelector('input[name="quest"]').value; // クエスト名
+            const number = document.querySelector('input[name="number"]').value; // 人数
+            const eventTime = document.querySelector('input[name="event-time"]').value; // 時間
+
+            // 2. APIに送信するデータを作成
+            // FlaskのDBにはtitleとcontentで保存する
+            const data = {
+                title: quest, // クエスト名をタイトルとして保存
+                content: `人数: ${number}, 時間: ${eventTime}` // 人数と時間を内容として保存
+            };
+
+            // 3. Flaskの投稿作成APIへPOSTリクエスト
+            fetch('http://localhost:5000/api/posts', {
+                method: 'POST', // POSTメソッドで送信
+                headers: {
+                    'Content-Type': 'application/json' // JSON形式で送信
+                },
+                body: JSON.stringify(data) // データをJSON文字列に変換
+            })
+            .then(res => res.json()) // レスポンスをJSONで取得
+            .then(result => {
+                // 4. 成功時の処理（例：アラート表示）
+                if(result.result === 'success'){
+                    alert('募集を登録しました'); // 成功メッセージ
+                }else{
+                    alert('登録に失敗しました: ' + (result.error || '')); // 失敗メッセージ
+                }
+            });
+        };
+    </script>
 </body>
 
 </html>
