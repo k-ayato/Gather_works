@@ -1,0 +1,281 @@
+@import url(../../assets/_variables.css);
+
+/* ===============
+   全体設定
+   =============== */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Sans', 'Noto Sans CJK JP', 'Yu Gothic', Meiryo, sans-serif;
+    margin: 0;
+    /* ダークモードの基本背景色 */
+    background-color: #1f1f1f;
+    /* ダークモードの基本文字色 */
+    color: #e0e0e0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 全ての要素でborderとpaddingの計算を簡単に */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ===============
+   3カラムレイアウト
+   =============== */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* 左カラム (ナビゲーション) */
+.left-column {
+    width: 90px;
+    /* カラムの背景色を暗くする */
+    background-color: #2d2d2d;
+    /* 境界線を暗い色に変更 */
+    border-right: 1px solid #3c3c3c;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+    flex-shrink: 0;
+}
+
+.left_top-column,
+.left_bottom-column {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.left-column img {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    /* 暗い背景で黒いアイコンを見えるようにする (不要な場合は削除) */
+    filter: invert(90%) sepia(5%) saturate(95%) hue-rotate(175deg) brightness(90%) contrast(85%);
+}
+
+.left-column img:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* 中央カラム (メインコンテンツ) */
+.center-column {
+    flex-grow: 1;
+    padding: 20px;
+    /* 上下のpaddingを少し調整 */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* パーツ間の余白を一括で設定 */
+    /* overflow-y: auto; を削除 */
+}
+
+/* 右カラム */
+.right-column {
+    width: 300px;
+    /* カラムの背景色を暗くする */
+    background-color: #2d2d2d;
+    /* 境界線を暗い色に変更 */
+    border-left: 1px solid #3c3c3c;
+    flex-shrink: 0;
+}
+
+/* ===============
+   中央カラムの各パーツ
+   =============== */
+
+/* ゲームアイコンスライダー */
+.icons_slider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 30px;
+    overflow: hidden;
+    position: relative;
+    cursor: grab;
+    user-select: none;
+}
+
+.icons_slider.active {
+    cursor: grabbing;
+}
+
+.icons_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* スクロールバーのスタイル（任意） */
+.icons_slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.icons_slider::-webkit-scrollbar-thumb {
+    /* スクロールバーの色を少し明るく */
+    background: #4f4f4f;
+    border-radius: 4px;
+}
+
+.icons {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid transparent;
+    opacity: 0.4;
+    transform: scale(0.8);
+    transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
+}
+
+.icons:hover {
+    /* ホバー時の挙動は変更なし */
+    transform: scale(1.05);
+}
+
+/* 選択されたアイコンのスタイル (アクセントカラーはそのまま) */
+.icons.selected {
+    opacity: 1;
+    transform: scale(1);
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+
+/* 募集条件の入力欄 */
+.condition_containar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    /* 各入力項目間の余白を少し調整 */
+    font-size: 1.1rem;
+    color: inherit;
+    flex-grow: 1;
+    /* ★この要素が余白を埋めるように伸びる */
+    overflow-y: auto;
+    /* ★コンテンツが多い場合はこのエリアだけスクロール */
+    justify-content: center;
+    /* 中の要素を垂直方向に中央寄せ */
+    padding: 10px;
+    /* スクロールバーとの余白を確保 */
+}
+
+.condition_containar input[type="date"],
+.condition_containar input[type="number"],
+.condition_containar input[type="text"],
+.condition_containar input[type="time"] {
+    padding: 12px;
+    /* 入力欄の境界線を暗い色に */
+    border: 1px solid #555555;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 400px;
+    /* 入力欄の背景色を暗く */
+    background-color: #3c3c3c;
+    /* 入力文字の色を明るく */
+    color: #e0e0e0;
+}
+
+.col {
+    display: flex;
+    gap: 20px;
+}
+
+.condition_containar label {
+    margin-right: 10px;
+}
+
+/* 募集ボタン */
+.buttun {
+    /* margin-top: 40px; を削除 (親要素のgapで管理) */
+    text-align: center;
+    flex-shrink: 0;
+    /* ボタンが縮まないように設定 */
+}
+
+.buttun button {
+    /* ボタンの色はアクセントなので変更なし */
+    background-color: #28a745;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    /* 影を少し調整 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.buttun button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* タグのコンテナ */
+.tag-container {
+    display: flex;
+    /* 横並びに配置 */
+    flex-wrap: wrap;
+    /* 要素がはみ出たら折り返す */
+    gap: 10px 12px;
+    /* タグ間の隙間 (上下 左右) */
+    justify-content: center;
+    /* 中央揃え */
+    max-width: 500px;
+    /* 最大幅を設定 */
+    margin-top: 10px;
+    /* 上のラベルとの余白 */
+}
+
+/* タグボタンの基本スタイル (ダークモード対応) */
+.tag-button {
+    padding: 8px 16px;
+    border: 1px solid #007bff;
+    /* 枠線の色をアクセントカラーに */
+    border-radius: 20px;
+    background-color: transparent;
+    /* 背景は透明に */
+    color: #007bff;
+    /* 文字色をアクセントカラーに */
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+    /* スマホでのタップ時のハイライトを消す */
+}
+
+/* マウスが乗った時のスタイル */
+.tag-button:hover {
+    background-color: rgba(0, 123, 255, 0.15);
+    /* アクセントカラーの薄い色 */
+    transform: translateY(-2px);
+    /* 少し浮き上がる効果 */
+}
+
+/* 選択されている (active) 時のスタイル */
+.tag-button.active {
+    background-color: #007bff;
+    /* 背景をアクセントカラーで塗りつぶす */
+    color: #ffffff;
+    /* 文字色を白に */
+    border-color: #007bff;
+    /* 枠線も同じ色に */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+/* フォーカス時のアウトライン（任意） */
+.tag-button:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
