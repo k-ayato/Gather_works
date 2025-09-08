@@ -23,6 +23,61 @@ def init_db():
         email TEXT UNIQUE NOT NULL,
         password TEXT NOT NULL
     )''')
+    # 大会募集テーブル
+    c.execute('''CREATE TABLE IF NOT EXISTS tournaments (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        quest TEXT NOT NULL,
+        number INTEGER NOT NULL,
+        date TEXT,
+        event_time TEXT,
+        tags TEXT
+    )''')
+# 大会募集一覧取得API
+@app.route('/api/tournaments', methods=['GET'])
+def get_tournaments():
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('SELECT id, quest, number, date, event_time, tags FROM tournaments ORDER BY id DESC')
+    tournaments = [
+        {
+            'id': row[0],
+            'quest': row[1],
+            'number': row[2],
+            'date': row[3],
+            'event_time': row[4],
+            'tags': row[5]
+        }
+        for row in c.fetchall()
+    ]
+    conn.close()
+    return jsonify(tournaments)
+
+# 大会募集新規登録API
+@app.route('/api/tournaments', methods=['POST'])
+def create_tournament():
+    data = request.json
+    quest = data.get('quest')
+    number = data.get('number')
+    date = data.get('date')
+    event_time = data.get('event_time')
+    tags = data.get('tags')
+    if not quest or not number:
+        return jsonify({'error': 'クエスト名と人数は必須です'}), 400
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('INSERT INTO tournaments (quest, number, date, event_time, tags) VALUES (?, ?, ?, ?, ?)',
+              (quest, number, date, event_time, tags))
+    conn.commit()
+    tournament_id = c.lastrowid
+    conn.close()
+    return jsonify({'result': 'success', 'tournament': {
+        'id': tournament_id,
+        'quest': quest,
+        'number': number,
+        'date': date,
+        'event_time': event_time,
+        'tags': tags
+    }}), 201
     # テストユーザーがなければ追加
     c.execute('SELECT * FROM users WHERE email=?', ('test@test.com',))
     if not c.fetchone():
