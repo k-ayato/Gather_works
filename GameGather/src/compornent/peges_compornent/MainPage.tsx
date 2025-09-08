@@ -24,18 +24,18 @@ const MainPage: React.FC = () => {
     <div>
       <aside className={styles.mainPage_leftBar}>
         <div className={styles.mainPage_logoContainer}>
-          <img className={styles.mainPage_logo} src={require('../../assets/logo/logo.svg')} alt="Game Gather ロゴ" />
+          <img className={styles.mainPage_logo} src="/assets/logo/logo.svg" alt="Game Gather ロゴ" />
         </div>
         <ul>
-          <li className={styles.mainPage_row} onClick={() => navigate('/')}> <img className={styles.mainPage_icon} src={require('../../assets/icons/home_hoso.svg')} alt="" /> <span className={styles.mainPage_link}>ホーム</span> </li>
-          <li className={styles.mainPage_row} onClick={() => navigate('/tournament')}> <img className={styles.mainPage_icon} src={require('../../assets/icons/taikai.svg')} alt="大会検索" /> <span className={styles.mainPage_link}>大会を探す</span> </li>
-          <li className={styles.mainPage_row} onClick={() => navigate('/recruit')}> <img className={styles.mainPage_icon} src={require('../../assets/icons/sarch_icon.svg')} alt="" /> <span className={styles.mainPage_link}>募集を探す</span> </li>
-          <li className={styles.mainPage_row} onClick={() => navigate('/chat')}> <img className={styles.mainPage_icon} src={require('../../assets/icons/messege_icon.svg')} alt="" /> <span className={styles.mainPage_link}>チャット</span> </li>
+          <li className={styles.mainPage_row} onClick={() => navigate('/')}> <img className={styles.mainPage_icon} src="/assets/icons/home_hoso.svg" alt="" /> <span className={styles.mainPage_link}>ホーム</span> </li>
+          <li className={styles.mainPage_row} onClick={() => navigate('/tournament')}> <img className={styles.mainPage_icon} src="/assets/icons/taikai.svg" alt="大会検索" /> <span className={styles.mainPage_link}>大会を探す</span> </li>
+          <li className={styles.mainPage_row} onClick={() => navigate('/recruit')}> <img className={styles.mainPage_icon} src="/assets/icons/sarch_icon.svg" alt="" /> <span className={styles.mainPage_link}>募集を探す</span> </li>
+          <li className={styles.mainPage_row} onClick={() => navigate('/chat')}> <img className={styles.mainPage_icon} src="/assets/icons/messege_icon.svg" alt="" /> <span className={styles.mainPage_link}>チャット</span> </li>
         </ul>
         <div className={styles.mainPage_leftsideLow}>
           <ul>
-            <li className={styles.mainPage_row}> <img className={styles.mainPage_icon} src={require('../../assets/icons/set_icon.svg')} alt="" /> <span className={styles.mainPage_link}>設定</span> </li>
-            <li className={styles.mainPage_row}> <img className={styles.mainPage_icon} src={require('../../assets/icons/man_icon.svg')} alt="" /> <span className={styles.mainPage_link}>プロフィール</span> </li>
+            <li className={styles.mainPage_row}> <img className={styles.mainPage_icon} src="/assets/icons/set_icon.svg" alt="" /> <span className={styles.mainPage_link}>設定</span> </li>
+            <li className={styles.mainPage_row}> <img className={styles.mainPage_icon} src="/assets/icons/man_icon.svg" alt="" /> <span className={styles.mainPage_link}>プロフィール</span> </li>
           </ul>
         </div>
       </aside>
