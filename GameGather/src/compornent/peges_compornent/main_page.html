@@ -4,7 +4,7 @@
     <meta charset = "UTF-8">
     <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
     
-    <!--リセットCSS (Destyle.css) -->
+    <!--リセットCSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css">
 
     <!--Google font-->
@@ -18,17 +18,34 @@
 </head>
 
 <body>
-    <div class="grid-container">
-        <img class="item" src = "../assets/IMG_3496.JPG" width="100%"
+    <div class="leftBar">
+        <img class="item" src = "" width="100%"
                 alt="icon">
+        <!--左のボタン×3-->
+        <div class="container">
+            <ul>
+                <li class="row">
+                    <img src="../../assets/icons/home_hoso.svg" width="32" height="32">
+                    <a href="main_page.html">ホーム</a>
+                </li>
+                <li class="row">
+                    <img src="../../assets/icons/sarch_icon.svg" width="32" height="32">
+                    <a href="">大会を探す</a>
+                </li>
+                <li class="row">
+                    <img src="../../assets/icons/messege_icon.svg" width="32" height="32">
+                    <a href="">チャット</a>
+                </li>
+            </ul>
         </div>
-        <div class="item">
+        <div class="center">
             <h2>中央のエリア</h2>
             <p>ここにコンテンツが入ります。</p>
         </div>
-        <div class="item">
-            <h2>右のエリア</h2>
-            <p>ここにコンテンツが入ります。</p>
+        <div class="rightBar">
+            <div class="recruit">
+                <a href="recruit_page.html" class="btn">新たに募集する</a>
+            </div>
         </div>
     </div>
 </body>
