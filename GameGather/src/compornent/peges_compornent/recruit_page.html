@@ -5,33 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Gather</title>
+    <link rel="stylesheet" href="recruit_page.css">
 </head>
 
 <body>
     <div class="container">
         <div class="left-column">
-            <img src="/GameGather/src/assets/icons/home_hoso.svg" height="60px" style="display: block; margin: auto;"
-                class="home_icon">
-            <img src="/GameGather/src/assets/icons/sarch_icon.svg" height="60px" style="display: block; margin: auto;"
-                class="sarch_icon">
-            <img src="/GameGather/src/assets/icons/messege_icon.svg" height="60px" style="display: block; margin: auto;"
-                class="messege_icon">
-            <img src="/GameGather/src/assets/icons/man_icon.svg" height="60px" style="display: block; margin: auto;"
-                class="profile_icon">
-            <img src="/GameGather/src/assets/icons/set_icon.svg" height="60px" style="display: block; margin: auto;"
-                class="setting_icon">
+            <div class="left_top-column">
+                <img src="../../assets/icons/home_hoso.svg" height="30px" align="center"
+                    style="display: block; margin: auto;" class="home_icon">
+                <img src="../../assets/icons/sarch_icon.svg" height="30px" align="center"
+                    style="display: block; margin: auto;" class="sarch_icon">
+                <img src="../../assets/icons/messege_icon.svg" height="30px" align="center"
+                    style="display: block; margin: auto;" class="messege_icon">
+            </div>
+            <div class="left_bottom-column">
+                <img src="../../assets/icons/man_icon.svg" height="80px" align="center"
+                    style="display: block; margin: auto;" class="profile_icon">
+                <img src="../../assets/icons/set_icon.svg" height="30px" align="center"
+                    style="display: block; margin: auto;" class="setting_icon">
+            </div>
         </div>
         <div class="center-column">
             <div class="icons_slider">
-                <img src="/GameGather/src/assets/game_icons/FGO.jpg" class="icons" data-value="1">
-                <img src="/GameGather/src/assets/game_icons/monsuto.jpg" class="icons" data-value="2">
-                <img src="/GameGather/src/assets/game_icons/pazudora.jpg" class="icons" data-value="3">
-                <img src="/GameGather/src/assets/game_icons/pokepoke.jpg" class="icons" data-value="4">
-                <img src="/GameGather/src/assets/game_icons/tsumutsumu.jpg" class="icons" data-value="5">
+                <div class="icons_wrapper">
+                    <img src="../../assets/game_icons/FGO.jpg" class="icons" data-value="1" draggable="false">
+                    <img src="../../assets/game_icons/monsuto.jpg" class="icons" data-value="2" draggable="false">
+                    <img src="../../assets/game_icons/pazudora.jpg" class="icons" data-value="3" draggable="false">
+                    <img src="../../assets/game_icons/pokepoke.jpg" class="icons" data-value="4" draggable="false">
+                    <img src="../../assets/game_icons/tsumutsumu.jpg" class="icons" data-value="5" draggable="false">
+                </div>
             </div>
             <div class="condition_containar">
-                クエスト
+                <label for="quest">クエスト</label>
                 <input type="text" name="quest">
+                <br>
+                <label for="number">人数</label>
+                <input type="number" min="1" max="10" step="1" name="number">
                 <br>
                 <label for="event-time">時間</label>
                 <input type="time" id="event-time" name="event-time">
@@ -40,10 +50,10 @@
                 <button>募集</button>
             </div>
         </div>
-        <script src="/GameGather/src/compornent/peges_ts_comrnent/iconslider.ts"></script>
         <div class="right-column">
         </div>
     </div>
+    <script src="../peges_ts_comrnent/iconslider.js"></script>
 </body>
 
 </html>
