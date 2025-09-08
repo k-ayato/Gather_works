@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Gather</title>
-    <link rel="stylesheet" href="tornament_gather_page.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./tornament_gather_page.css">
 </head>
+
 <body>
     <div class="container">
         <div class="left-column">
             <div class="left_top-column">
-                <img src="../../assets/icons/home_hoso.svg" height="30px" style="display: block; margin: auto;" class="home_icon">
-                <img src="../../assets/icons/sarch_icon.svg" height="30px" style="display: block; margin: auto;" class="sarch_icon">
-                <img src="../../assets/icons/messege_icon.svg" height="30px" style="display: block; margin: auto;" class="messege_icon">
+                <img src="../../assets/icons/home_hoso.svg" height="30px" align="center"
+                    style="display: block; margin: auto;" class="home_icon">
+                <img src="../../assets/icons/sarch_icon.svg" height="30px" align="center"
+                    style="display: block; margin: auto;" class="sarch_icon">
+                <img src="../../assets/icons/messege_icon.svg" height="30px" align="center"
+                    style="display: block; margin: auto;" class="messege_icon">
             </div>
             <div class="left_bottom-column">
-                <img src="../../assets/icons/man_icon.svg" height="80px" style="display: block; margin: auto;" class="profile_icon">
-                <img src="../../assets/icons/set_icon.svg" height="30px" style="display: block; margin: auto;" class="setting_icon">
+                <img src="../../assets/icons/man_icon.svg" height="80px" align="center"
+                    style="display: block; margin: auto;" class="profile_icon">
+                <img src="../../assets/icons/set_icon.svg" height="30px" align="center"
+                    style="display: block; margin: auto;" class="setting_icon">
             </div>
         </div>
         <div class="center-column">
@@ -60,9 +63,8 @@
                     <button class="tag-button">男子禁制</button>
                 </div>
             </div>
-            <div id="tournament-list"></div>
             <div class="buttun">
-                <button id="tournament-register-btn">大会募集</button>
+                <button>募集</button>
             </div>
         </div>
         <div class="right-column">
@@ -70,49 +72,6 @@
     </div>
     <script src="../peges_ts_comrnent/iconslider.js"></script>
     <script src="../peges_ts_comrnent/tag_button.js"></script>
-    <script>
-        // 大会一覧取得して表示
-        function loadTournaments() {
-            fetch('http://localhost:5000/api/tournaments')
-                .then(res => res.json())
-                .then(tournaments => {
-                    const list = document.getElementById('tournament-list');
-                    list.innerHTML = '';
-                    tournaments.forEach(t => {
-                        const div = document.createElement('div');
-                        div.textContent = `${t.quest} / ${t.number}人 / ${t.date} / ${t.event_time} / ${t.tags}`;
-                        list.appendChild(div);
-                    });
-                });
-        }
-        loadTournaments();
-
-        // 大会募集ボタンで新規登録
-        document.getElementById('tournament-register-btn').onclick = function() {
-            const quest = document.querySelector('input[name="quest"]').value;
-            const number = document.querySelector('input[name="number"]').value;
-            const date = document.querySelector('input[name="date"]').value;
-            const eventTime = document.querySelector('input[name="event-time"]').value;
-            // タグはカンマ区切りで取得
-            const tags = Array.from(document.querySelectorAll('.tag-button.active')).map(btn => btn.textContent).join(',');
-
-            const data = { quest, number, date, event_time: eventTime, tags };
-            fetch('http://localhost:5000/api/tournaments', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            })
-            .then(res => res.json())
-            .then(result => {
-                if(result.result === 'success'){
-                    alert('大会募集を登録しました');
-                    loadTournaments(); // 登録後一覧再取得
-                }else{
-                    alert('登録に失敗しました: ' + (result.error || ''));
-                }
-            });
-        };
-    </script>
 </body>
 
 </html>
