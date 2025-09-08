@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+        <script>
+            // ログイン状態をlocalStorage等で管理していない場合は、常にログインページへリダイレクト
+            if (!localStorage.getItem('isLoggedIn')) {
+                window.location.href = 'login_pages.html';
+            }
+        </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css">
@@ -17,22 +23,26 @@
   <div class="leftBar">
       <div class="logo-container">
           <a href="main_page.html">
-              <img class="logo" src="path/to/your/logo.svg" alt="ロゴ">
+              <img class="logo" src="../../assets/logo/logo.svg" alt="Game Gather ロゴ" style="width:180px; height:auto; display:block; margin:auto;">
           </a>
       </div>
       
       <ul>
           <li class="row">
               <img src="../../assets/icons/home_hoso.svg" width="28" height="28" alt="">
-              <a href="main_page.html">ホーム</a>
+              <a href="main_page.html" onclick="location.reload(); return false;">ホーム</a>
+          </li>
+          <li class="row">
+              <img src="../../assets/icons/taikai.svg" width="28" height="28" alt="大会検索">
+              <a href="tornament_gather_page.html">大会を探す</a>
           </li>
           <li class="row">
               <img src="../../assets/icons/sarch_icon.svg" width="28" height="28" alt="">
-              <a href="#">大会を探す</a>
+              <a href="recruit_page.html">募集を探す</a>
           </li>
           <li class="row">
               <img src="../../assets/icons/messege_icon.svg" width="28" height="28" alt="">
-              <a href="#">チャット</a>
+              <a href="chat_page.html">チャット</a>
           </li>
       </ul>
 
@@ -51,6 +61,7 @@
   </div>
 
   <div class="center">
+    <!-- 固定カードはそのまま -->
     <div class="game-card">
         <div class="card-header">
             <h3 class="game-title">VALORANT コンペティティブ</h3>
@@ -67,11 +78,10 @@
                 <span class="tag">初心者歓迎</span>
                 <span class="tag">ランク上げ</span>
                 <span class="tag">VCあり</span>
-            </div>
-            <button class="join-button">参加する</button>
+            </div>  
+            <button class="join-button" onclick="window.location.href='chat_page.html'">参加する</button>
         </div>
     </div>
-
     <div class="game-card">
         <div class="card-header">
             <h3 class="game-title">Apex Legends カジュアル</h3>
@@ -88,9 +98,11 @@
                 <span class="tag">エンジョイ</span>
                 <span class="tag">VCなしOK</span>
             </div>
-            <button class="join-button">参加する</button>
+            <button class="join-button" onclick="window.location.href='chat_page.html'">参加する</button>
         </div>
     </div>
+    <!-- 募集一覧を表示する領域 -->
+    <div id="post-list"></div>
     <div class="game-launcher">
           <div class="launcher-icons-wrapper">
               <ul class="game-icon-list">
@@ -117,6 +129,36 @@
               </svg>
           </button>
       </div>
+        <!-- APIから取得した大会募集一覧を下部に追加表示 -->
+        <div id="tournament-list"></div>
+        <script>
+            // 募集一覧（posts）をAPIから取得して表示
+            function loadPosts() {
+                fetch('http://localhost:5000/api/posts')
+                    .then(res => res.json())
+                    .then(posts => {
+                        const postList = document.getElementById('post-list');
+                        postList.innerHTML = '';
+                        posts.forEach(post => {
+                            const card = document.createElement('div');
+                            card.className = 'game-card';
+                            card.innerHTML = `
+                                <div class="card-header">
+                                    <h3 class="game-title">${post.title}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p class="description">${post.content}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="join-button" onclick="window.location.href='chat_page.html'">参加する</button>
+                                </div>
+                            `;
+                            postList.appendChild(card);
+                        });
+                    });
+            }
+            loadPosts();
+        </script>
   </div>
 
   <div class="rightBar">

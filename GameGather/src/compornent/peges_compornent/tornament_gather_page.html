@@ -11,64 +11,78 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="left-column">
-            <div class="left_top-column">
-                <img src="../../assets/icons/home_hoso.svg" height="30px" style="display: block; margin: auto;" class="home_icon">
-                <img src="../../assets/icons/sarch_icon.svg" height="30px" style="display: block; margin: auto;" class="sarch_icon">
-                <img src="../../assets/icons/messege_icon.svg" height="30px" style="display: block; margin: auto;" class="messege_icon">
-            </div>
-            <div class="left_bottom-column">
-                <img src="../../assets/icons/man_icon.svg" height="80px" style="display: block; margin: auto;" class="profile_icon">
-                <img src="../../assets/icons/set_icon.svg" height="30px" style="display: block; margin: auto;" class="setting_icon">
-            </div>
-        </div>
-        <div class="center-column">
-            <div class="icons_slider">
-                <div class="icons_wrapper">
-                    <img src="../../assets/game_icons/FGO.jpg" class="icons" data-value="1" draggable="false">
-                    <img src="../../assets/game_icons/monsuto.jpg" class="icons" data-value="2" draggable="false">
-                    <img src="../../assets/game_icons/pazudora.jpg" class="icons" data-value="3" draggable="false">
-                    <img src="../../assets/game_icons/pokepoke.jpg" class="icons" data-value="4" draggable="false">
-                    <img src="../../assets/game_icons/tsumutsumu.jpg" class="icons" data-value="5" draggable="false">
+        <div class="container">
+            <div class="left-column">
+                <div class="left_top-column">
+                    <img src="../../assets/icons/home_hoso.svg" height="30px" style="display: block; margin: auto; cursor:pointer;" class="home_icon" onclick="window.location.href='main_page.html'">
+                    <img src="../../assets/icons/sarch_icon.svg" height="30px" style="display: block; margin: auto; cursor:pointer;" class="sarch_icon" onclick="window.location.href='recruit_page.html'">
+                    <img src="../../assets/icons/messege_icon.svg" height="30px" style="display: block; margin: auto; cursor:pointer;" class="messege_icon" onclick="window.location.href='chat_page.html'">
+                </div>
+                <div class="left_bottom-column">
+                    <img src="../../assets/icons/man_icon.svg" height="80px" style="display: block; margin: auto; cursor:pointer;" class="profile_icon" onclick="window.location.href='profile_page.html'">
+                    <img src="../../assets/icons/set_icon.svg" height="30px" style="display: block; margin: auto; cursor:pointer;" class="setting_icon" onclick="window.location.href='setting_page.html'">
                 </div>
             </div>
-            <div class="condition_containar">
-                <label for="quest">クエスト</label>
-                <input type="text" name="quest">
-                <label for="number">人数</label>
-                <input type="number" min="1" max="30" step="1" name="number">
-                <div class="col">
-                    <label for="date">日付</label>
-                    <input type="date" id="date" name="date">
-                    <label for="event-time">時間</label>
-                    <input type="time" id="event-time" name="event-time">
+            <div class="center-column">
+                <div class="icons_slider">
+                    <div class="icons_wrapper">
+                        <img src="../../assets/game_icons/FGO.jpg" class="icons" data-value="1" draggable="false">
+                        <img src="../../assets/game_icons/monsuto.jpg" class="icons" data-value="2" draggable="false">
+                        <img src="../../assets/game_icons/pazudora.jpg" class="icons" data-value="3" draggable="false">
+                        <img src="../../assets/game_icons/pokepoke.jpg" class="icons" data-value="4" draggable="false">
+                        <img src="../../assets/game_icons/tsumutsumu.jpg" class="icons" data-value="5" draggable="false">
+                    </div>
                 </div>
-                <label for="tag">タグ</label>
-                <div class="tag-container">
-                    <button class="tag-button active">初心者</button>
-                    <button class="tag-button">中級者</button>
-                    <button class="tag-button">上級者</button>
-                    <button class="tag-button">気軽に</button>
-                    <button class="tag-button">ガチンコ</button>
-                    <button class="tag-button">ライブ配信</button>
-                    <button class="tag-button">通話あり</button>
-                    <button class="tag-button">周回</button>
-                    <button class="tag-button">初心者歓迎</button>
-                    <button class="tag-button">PC限定</button>
-                    <button class="tag-button">CS限定</button>
-                    <button class="tag-button">男子禁制</button>
+                <div class="condition_containar">
+                    <label for="quest">クエスト</label>
+                    <input type="text" name="quest">
+                    <label for="number">人数</label>
+                    <input type="number" min="1" max="30" step="1" name="number">
+                    <div class="col">
+                        <label for="date">日付</label>
+                        <input type="date" id="date" name="date">
+                        <label for="event-time">時間</label>
+                        <input type="time" id="event-time" name="event-time">
+                    </div>
+                    <label for="tag">タグ</label>
+                    <div class="tag-container">
+                        <button class="tag-button active">初心者</button>
+                        <button class="tag-button">中級者</button>
+                        <button class="tag-button">上級者</button>
+                        <button class="tag-button">気軽に</button>
+                        <button class="tag-button">ガチンコ</button>
+                        <button class="tag-button">ライブ配信</button>
+                        <button class="tag-button">通話あり</button>
+                        <button class="tag-button">周回</button>
+                        <button class="tag-button">初心者歓迎</button>
+                        <button class="tag-button">PC限定</button>
+                        <button class="tag-button">CS限定</button>
+                        <button class="tag-button">男子禁制</button>
+                    </div>
+                </div>
+                <div class="buttun">
+                    <button id="tournament-btn">募集</button>
                 </div>
             </div>
-            <div class="buttun">
-                <button>募集</button>
+            <div class="right-column">
             </div>
         </div>
-        <div class="right-column">
-        </div>
-    </div>
-    <script src="../peges_ts_comrnent/iconslider.js"></script>
-    <script src="../peges_ts_comrnent/tag_button.js"></script>
+        <script src="../peges_ts_comrnent/iconslider.js"></script>
+        <script src="../peges_ts_comrnent/tag_button.js"></script>
+        <script>
+            // 募集ボタンがクリックされたときの処理
+            document.getElementById('tournament-btn').onclick = function() {
+                // 入力値（クエスト名・人数・日付・時間）を取得
+                const quest = document.querySelector('input[name="quest"]').value;
+                const number = document.querySelector('input[name="number"]').value;
+                const date = document.querySelector('input[name="date"]').value;
+                const eventTime = document.querySelector('input[name="event-time"]').value;
+                // タグの取得（activeなもの）
+                const tags = Array.from(document.querySelectorAll('.tag-button.active')).map(btn => btn.textContent);
+                // ここでAPI送信やバリデーションなどを実装可能
+                alert(`クエスト: ${quest}\n人数: ${number}\n日付: ${date}\n時間: ${eventTime}\nタグ: ${tags.join(', ')}`);
+            }
+        </script>
 </body>
 
 </html>

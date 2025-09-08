@@ -67,12 +67,12 @@ body {
 .center-column {
     flex-grow: 1;
     padding: 20px;
-    /* 上下のpaddingを少し調整 */
     display: flex;
     flex-direction: column;
     gap: 20px;
-    /* パーツ間の余白を一括で設定 */
-    /* overflow-y: auto; を削除 */
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
 }
 
 /* 右カラム */
@@ -153,37 +153,34 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    /* 各入力項目間の余白を少し調整 */
-    font-size: 1.1rem;
+    gap: 22px;
+    font-size: 1.25rem;
     color: inherit;
     flex-grow: 1;
-    /* ★この要素が余白を埋めるように伸びる */
     overflow-y: auto;
-    /* ★コンテンツが多い場合はこのエリアだけスクロール */
     justify-content: center;
-    /* 中の要素を垂直方向に中央寄せ */
-    padding: 10px;
-    /* スクロールバーとの余白を確保 */
+    padding: 24px 10px 10px 10px;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
 }
 
+.condition_containar input[type="date"],
 .condition_containar input[type="date"],
 .condition_containar input[type="number"],
 .condition_containar input[type="text"],
 .condition_containar input[type="time"] {
-    padding: 12px;
-    /* 入力欄の境界線を暗い色に */
-    border: 1px solid #555555;
-    border-radius: 8px;
-    font-size: 1rem;
+    padding: 16px;
+    border: 1.5px solid #555555;
+    border-radius: 10px;
+    font-size: 1.15rem;
     width: 100%;
-    max-width: 400px;
-    /* 入力欄の背景色を暗く */
+    max-width: 420px;
     background-color: #3c3c3c;
-    /* 入力文字の色を明るく */
     color: #e0e0e0;
+    margin-bottom: 8px;
+    box-sizing: border-box;
 }
-
 .col {
     display: flex;
     gap: 20px;
@@ -191,6 +188,14 @@ body {
 
 .condition_containar label {
     margin-right: 10px;
+    font-size: 1.15em;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    margin-bottom: 4px;
+    display: block;
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
 }
 
 /* 募集ボタン */
@@ -224,35 +229,50 @@ body {
 /* タグのコンテナ */
 .tag-container {
     display: flex;
-    /* 横並びに配置 */
     flex-wrap: wrap;
-    /* 要素がはみ出たら折り返す */
-    gap: 10px 12px;
-    /* タグ間の隙間 (上下 左右) */
+    gap: 14px 16px;
     justify-content: center;
-    /* 中央揃え */
-    max-width: 500px;
-    /* 最大幅を設定 */
-    margin-top: 10px;
-    /* 上のラベルとの余白 */
+    max-width: 600px;
+    margin-top: 14px;
+    margin-bottom: 8px;
 }
 
 /* タグボタンの基本スタイル (ダークモード対応) */
 .tag-button {
-    padding: 8px 16px;
-    border: 1px solid #007bff;
-    /* 枠線の色をアクセントカラーに */
-    border-radius: 20px;
+    padding: 10px 22px;
+    border: 1.5px solid #007bff;
+    border-radius: 22px;
     background-color: transparent;
-    /* 背景は透明に */
     color: #007bff;
-    /* 文字色をアクセントカラーに */
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 1.1em;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     -webkit-tap-highlight-color: transparent;
-    /* スマホでのタップ時のハイライトを消す */
+    margin-bottom: 4px;
+}
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    .center-column {
+        padding: 10px;
+        gap: 10px;
+    }
+    .condition_containar {
+        max-width: 98vw;
+        padding: 10px 2vw;
+        font-size: 1.1rem;
+    }
+    .tag-container {
+        max-width: 98vw;
+        gap: 10px 8px;
+    }
+    .tag-button {
+        font-size: 1em;
+        padding: 8px 12px;
+    }
 }
 
 /* マウスが乗った時のスタイル */

@@ -14,20 +14,53 @@ body, html {
   height: 100%;
   background: #f4f4f9;
 }
-
-/* 3分割レイアウト */
-.layout {
-  display: grid;
-  grid-template-columns: 200px 1fr 200px; /* 左:タブ, 中央:チャット, 右:プロフィール */
-  height: 100vh;
-  border: 1px solid #ccc;
+body, html {
+  height: 100%;
+  background: #181a20;
+  color: #f4f4f9;
 }
 
-/* 左：タブスペース */
-.tab-space {
+/* 3分割レイアウト 横並び */
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+/* 左カラム */
+.left-column {
+  width: 200px;
   background: #fff;
   border-right: 1px solid #ddd;
-  padding: 10px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.left-column {
+  width: 200px;
+  background: #23262f;
+  border-right: 1px solid #222;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+}
+.left_top-column, .left_bottom-column {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+.home_icon, .sarch_icon, .messege_icon, .profile_icon, .setting_icon {
+  margin: 0;
+  filter: brightness(1.2) invert(0.85);
+  transition: filter 0.2s;
+}
+.home_icon:hover, .sarch_icon:hover, .messege_icon:hover, .profile_icon:hover, .setting_icon:hover {
+  filter: brightness(2) invert(1);
 }
 
 .tab-space h3 {
@@ -53,11 +86,41 @@ body, html {
   background: #e6e6ff;
 }
 
-/* 中央：チャット欄 */
-.chat-container {
+/* 中央カラム */
+.center-column {
+  flex: 1;
+  background: #fafafa;
   display: flex;
   flex-direction: column;
-  background: #fafafa;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 24px;
+}
+.center-column {
+  flex: 1;
+  background: #181a20;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 24px;
+}
+.chat-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.chat-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: #23262f;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
 }
 
 .conversation {
@@ -65,12 +128,27 @@ body, html {
   padding: 15px;
   overflow-y: auto;
 }
+.conversation {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  color: #f4f4f9;
+}
 
 .message {
   margin-bottom: 10px;
   padding: 8px 12px;
   border-radius: 10px;
   background: #e6f7ff;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+.message {
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #353945;
+  color: #f4f4f9;
   max-width: 70%;
   word-wrap: break-word;
 }
@@ -87,6 +165,13 @@ body, html {
   border-top: 1px solid #ddd;
   background: #fff;
 }
+.conversation-compose {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #222;
+  background: #23262f;
+}
 
 .input-name {
   width: 20%;
@@ -102,6 +187,15 @@ body, html {
   border: 1px solid #ccc;
   border-radius: 6px;
   margin-right: 6px;
+}
+.input-msg {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #353945;
+  border-radius: 6px;
+  margin-right: 6px;
+  background: #181a20;
+  color: #f4f4f9;
 }
 
 .send {
@@ -121,15 +215,39 @@ body, html {
   background: #2196f3;
 }
 
-/* 右：プロフィール欄 */
-.profile-container {
+/* 右カラム */
+.right-column {
+  width: 200px;
   background: #fff;
   border-left: 1px solid #ddd;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-container {
+  width: 100%;
   padding: 10px;
 }
+.send {
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(33,150,243,0.15);
+}
+.send:hover {
+  background: #1769aa;
+}
 
-.profile-container h3 {
-  margin-bottom: 10px;
+/* 修正: .sendのフォントサイズ・色は .send にまとめる */
+.send {
   font-size: 16px;
   color: #333;
 }
@@ -150,4 +268,27 @@ body, html {
   border-radius: 50%;
   margin-right: 8px;
   object-fit: cover;
+}
+
+.right-column {
+  width: 200px;
+  background: #23262f;
+  border-left: 1px solid #222;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-container {
+  width: 100%;
+  padding: 10px;
+  color: #f4f4f9;
+  background: #23262f;
+  border-radius: 12px;
+}
+.participants-list, .participant-list {
+  background: #23262f;
+  color: #f4f4f9;
+  border-radius: 8px;
+  padding: 8px 0;
 }
