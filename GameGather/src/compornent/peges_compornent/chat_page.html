@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チャットルーム</title>
+    <link rel="stylesheet" href="chat_page.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> -->
+</head>
+<body>
+    <div class="container">
+        <div class="layout">
+            <!-- 左:タブスペース-->
+            <div class="tabspace">
+                <h3></h3>
+                <ul>
+                </ul>
+            </div>
+
+            <!-- 中央:チャット欄-->
+            <div class="chat-container">
+                <div class="name">
+                <span>チャットルーム名</span>
+                </div>
+            <div class="conversation">
+                <div class="conversation-container" id="messages">
+                <!-- メッセージがここに表示されます -->
+                </div>
+            </div>
+            <form id="message-form" class="conversation-compose">
+                <input id="message-input" class="input-msg" name="input" placeholder="メッセージを入力" autocomplete="off">
+                <button class="send" type="submit" aria-label="メッセージ送信">
+                <i class="fa fa-paper-plane"></i>
+                </button>
+            </form>
+            </div>
+
+            <!-- プロフィール欄-->
+            <div class="plofile-container">
+                <h3>参加者</h3>
+                <ul id="participants" class="participants-list">
+                </ul>
+            </div> 
+        </div>
+</body>
+</html>
