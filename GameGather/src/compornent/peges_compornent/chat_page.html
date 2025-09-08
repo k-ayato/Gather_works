@@ -1,54 +1,47 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>チャットルーム</title>
     <link rel="stylesheet" href="chat_page.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> -->
 </head>
 <body>
     <div class="container">
-        <div class="left-column">
-            <div class="left_top-column">
-                <img src="../../assets/icons/home_hoso.svg" height="30px" style="display: block; margin: auto;" class="home_icon">
-                <img src="../../assets/icons/sarch_icon.svg" height="30px" style="display: block; margin: auto;" class="sarch_icon">
-                <img src="../../assets/icons/messege_icon.svg" height="30px" style="display: block; margin: auto;" class="messege_icon">
+        <div class="layout">
+            <!-- 左:タブスペース-->
+            <div class="tabspace">
+                <h3></h3>
+                <ul>
+                </ul>
             </div>
-            <div class="left_bottom-column">
-                <img src="../../assets/icons/man_icon.svg" height="80px" style="display: block; margin: auto;" class="profile_icon">
-                <img src="../../assets/icons/set_icon.svg" height="30px" style="display: block; margin: auto;" class="setting_icon">
-            </div>
-        </div>
-        <div class="center-column">
+
+            <!-- 中央:チャット欄-->
             <div class="chat-container">
                 <div class="name">
-                    <span>チャットルーム名</span>
+                <span>チャットルーム名</span>
                 </div>
-                <div class="conversation">
-                    <div class="conversation-container" id="messages">
-                        <!-- メッセージがここに表示されます -->
-                    </div>
+            <div class="conversation">
+                <div class="conversation-container" id="messages">
+                <!-- メッセージがここに表示されます -->
                 </div>
-                <form id="message-form" class="conversation-compose">
-                    <input id="message-input" class="input-msg" name="input" placeholder="メッセージを入力" autocomplete="off">
-                    <button class="send" type="submit" aria-label="メッセージ送信">
-                        <i class="fa fa-paper-plane"></i>
-                    </button>
-                </form>
             </div>
-        </div>
-        <div class="right-column">
+            <form id="message-form" class="conversation-compose">
+                <input id="message-input" class="input-msg" name="input" placeholder="メッセージを入力" autocomplete="off">
+                <button class="send" type="submit" aria-label="メッセージ送信">
+                <i class="fa fa-paper-plane"></i>
+                </button>
+            </form>
+            </div>
+
+            <!-- プロフィール欄-->
             <div class="plofile-container">
                 <h3>参加者</h3>
                 <ul id="participants" class="participants-list">
                 </ul>
-            </div>
+            </div> 
         </div>
-    </div>
 </body>
 </html>
