@@ -40,5 +40,40 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // ログインフォーム送信時の処理
+        document.getElementById('loginForm').onsubmit = function(e) {
+            e.preventDefault(); // ページリロード防止
+
+            // 1. 入力値（メール・パスワード）を取得
+            const email = document.getElementById('email').value; // メールアドレス
+            const password = document.getElementById('password').value; // パスワード
+
+            // 2. APIに送信するデータを作成
+            const data = {
+                email: email,
+                password: password
+            };
+
+            // 3. FlaskのログインAPIへPOSTリクエスト
+            fetch('http://localhost:5000/api/login', {
+                method: 'POST', // POSTメソッドで送信
+                headers: {
+                    'Content-Type': 'application/json' // JSON形式で送信
+                },
+                body: JSON.stringify(data) // データをJSON文字列に変換
+            })
+            .then(res => res.json()) // レスポンスをJSONで取得
+            .then(result => {
+                // 4. 認証結果に応じて処理
+                if(result.success){
+                    alert('ログイン成功'); // 成功メッセージ
+                    // ここでページ遷移など
+                }else{
+                    alert('ログイン失敗: ' + (result.error || '')); // 失敗メッセージ
+                }
+            });
+        };
+    </script>
 </body>
 </html>
