@@ -90,7 +90,6 @@ body {
 .icons_slider {
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 100%;
     max-width: 400px;
     margin: 0 auto 30px;
