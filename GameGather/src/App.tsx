@@ -1,6 +1,16 @@
 import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ChatPage from "./compornent/peges_compornent/chat_page";
+import Registration from "./compornent/peges_compornent/registration";
 
-const App: React.FC = () => <ChatPage />;
+const App: React.FC = () => (
+	<BrowserRouter>
+		<Routes>
+			<Route path="/chat" element={<ChatPage />} />
+			<Route path="/register" element={<Registration />} />
+			<Route path="*" element={<Navigate to="/chat" replace />} />
+		</Routes>
+	</BrowserRouter>
+);
 
 export default App;
