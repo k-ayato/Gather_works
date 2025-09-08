@@ -29,7 +29,28 @@
                 <img src="/GameGather/src/assets/game_icons/pokepoke.jpg" class="icons" data-value="4">
                 <img src="/GameGather/src/assets/game_icons/tsumutsumu.jpg" class="icons" data-value="5">
             </div>
+            <!-- 投稿一覧を表示するためのリスト -->
+            <ul id="posts-list"></ul>
             <script src="/GameGather/src/compornent/peges_ts_comrnent/iconslider.ts"></script>
+            <script>
+            // ページ読み込み時にFlask APIから投稿一覧を取得して表示する
+            window.onload = function() {
+                // Flaskサーバーの/api/postsエンドポイントにGETリクエストを送る
+                fetch('http://localhost:5000/api/posts')
+                    .then(res => res.json()) // レスポンスをJSON形式で取得
+                    .then(posts => {
+                        // 投稿一覧を表示するul要素を取得
+                        const list = document.getElementById('posts-list');
+                        // 取得した投稿データを1件ずつリストに追加
+                        posts.forEach(post => {
+                            const li = document.createElement('li');
+                            // 投稿タイトルと内容を表示
+                            li.textContent = post.title + ': ' + post.content;
+                            list.appendChild(li);
+                        });
+                    });
+            };
+            </script>
         </div>
         <div class="right-column">
         </div>
