@@ -1,3 +1,47 @@
+/* 人数表示のデザイン強化 */
+.member-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.member-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #222;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    margin-left: 4px;
+}
+/* 参加ボタンのデザイン強化 */
+.join-button {
+    background: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 32px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.15);
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    outline: none;
+    margin-top: 8px;
+}
+.join-button:hover {
+    background: #1769aa;
+    box-shadow: 0 4px 16px rgba(33,150,243,0.25);
+    transform: translateY(-2px) scale(1.04);
+}
+.join-button:active {
+    background: #0d47a1;
+    transform: scale(0.98);
+}
 /* 全体共通 */
 body {
     margin: 0;

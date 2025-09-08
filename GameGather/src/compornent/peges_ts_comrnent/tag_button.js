@@ -1,15 +1,22 @@
-// HTMLドキュメントが完全に読み込まれてから処理を開始
-document.addEventListener('DOMContentLoaded', () => {
-
-    // クラス名が 'tag-button' の要素をすべて取得
-    const tagButtons = document.querySelectorAll('.tag-button');
-
-    // 取得した各ボタンに対してクリックイベントを設定
-    tagButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // クリックされたボタンのクラスに 'active' があれば削除、なければ追加する
-            button.classList.toggle('active');
-        });
+// DOM内のすべての .tag-button 要素を取得する
+const tagButtons = document.querySelectorAll('.tag-button');
+// 各ボタンに対して処理を行う
+tagButtons.forEach(button => {
+    // クリックイベントリスナーを追加
+    button.addEventListener('click', () => {
+        // button要素のクラスリストに対して 'active' クラスの有無を切り替える
+        button.classList.toggle('active');
+        // （任意）現在アクティブなタグをコンソールに出力
+        logActiveTags();
     });
-
 });
+// （任意）現在アクティブなタグをコンソールに出力する関数
+function logActiveTags() {
+    const activeTags = document.querySelectorAll('.tag-button.active');
+    const activeTagNames = Array.from(activeTags).map(tag => tag.textContent);
+    console.clear(); // コンソールをクリア
+    console.log('アクティブなタグ:', activeTagNames);
+}
+// 初期状態でアクティブなタグをログに出力
+logActiveTags();
+export {};
