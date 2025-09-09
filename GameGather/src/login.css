@@ -1,3 +1,96 @@
+body, html {
+    height: 100%;
+    background: #181a20;
+    color: #f4f4f9;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+.left-column {
+    width: 200px;
+    background: #23262f;
+    border-right: 1px solid #222;
+    padding: 32px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+}
+.left_top-column, .left_bottom-column {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+}
+.home_icon, .sarch_icon, .messege_icon, .profile_icon, .setting_icon {
+    margin: 0;
+    filter: brightness(1.2) invert(0.85);
+    transition: filter 0.2s;
+}
+.home_icon:hover, .sarch_icon:hover, .messege_icon:hover, .profile_icon:hover, .setting_icon:hover {
+    filter: brightness(2) invert(1);
+}
+.center-column {
+    flex: 1;
+    background: #181a20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24px;
+}
+.login-container {
+    background: #23262f;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+    padding: 32px 40px;
+    width: 100%;
+    max-width: 400px;
+}
+.form-group label, .form-group input {
+    color: #f4f4f9;
+}
+.form-group input {
+    background: #181a20;
+    border: 1px solid #353945;
+    border-radius: 6px;
+    padding: 8px;
+}
+.login-btn {
+    background: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 32px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.15);
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    outline: none;
+    margin-top: 16px;
+}
+.login-btn:hover {
+    background: #1769aa;
+    box-shadow: 0 4px 16px rgba(33,150,243,0.25);
+    transform: translateY(-2px) scale(1.04);
+}
+.login-btn:active {
+    background: #0d47a1;
+    transform: scale(0.98);
+}
+.right-column {
+    width: 200px;
+    background: #23262f;
+    border-left: 1px solid #222;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 * {
     margin: 0;
     padding: 0;

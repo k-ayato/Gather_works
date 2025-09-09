@@ -15,13 +15,14 @@
     <div class="container">
         <div class="left-column">
             <div class="left_top-column">
-                <img src="../../assets/icons/home_hoso.svg" height="30px" style="display: block; margin: auto;" class="home_icon">
-                <img src="../../assets/icons/sarch_icon.svg" height="30px" style="display: block; margin: auto;" class="sarch_icon">
-                <img src="../../assets/icons/messege_icon.svg" height="30px" style="display: block; margin: auto;" class="messege_icon">
+                <img src="../../assets/icons/home_hoso.svg" height="30px" style="display: block; margin: auto; cursor:pointer;" class="home_icon" onclick="window.location.href='main_page.html'">
+                <img src="../../assets/icons/taikai.svg" height="30px" style="display: block; margin: auto; cursor:pointer;" class="taikai_icon" onclick="window.location.href='tornament_gather_page.html'">
+                <img src="../../assets/icons/sarch_icon.svg" height="30px" style="display: block; margin: auto; cursor:pointer;" class="sarch_icon" onclick="window.location.href='recruit_page.html'">
+                <img src="../../assets/icons/messege_icon.svg" height="30px" style="display: block; margin: auto; cursor:pointer;" class="messege_icon" onclick="window.location.href='chat_page.html'">
             </div>
             <div class="left_bottom-column">
-                <img src="../../assets/icons/man_icon.svg" height="80px" style="display: block; margin: auto;" class="profile_icon">
-                <img src="../../assets/icons/set_icon.svg" height="30px" style="display: block; margin: auto;" class="setting_icon">
+                <img src="../../assets/icons/man_icon.svg" height="80px" style="display: block; margin: auto; cursor:pointer;" class="profile_icon" onclick="window.location.href='profile_page.html'">
+                <img src="../../assets/icons/set_icon.svg" height="30px" style="display: block; margin: auto; cursor:pointer;" class="setting_icon" onclick="window.location.href='setting_page.html'">
             </div>
         </div>
         <div class="center-column">
@@ -51,4 +52,21 @@
         </div>
     </div>
 </body>
+<script>
+// メッセージ送信で画面に表示
+document.getElementById('message-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const input = document.getElementById('message-input');
+    const text = input.value.trim();
+    if (text) {
+        const messages = document.getElementById('messages');
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'message';
+        msgDiv.textContent = text;
+        messages.appendChild(msgDiv);
+        input.value = '';
+        messages.scrollTop = messages.scrollHeight;
+    }
+});
+</script>
 </html>

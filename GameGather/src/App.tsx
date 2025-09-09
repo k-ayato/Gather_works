@@ -8,6 +8,7 @@ import TornamentGatherPage from "./compornent/peges_compornent/tornament_gather_
 const App: React.FC = () => (
 	<BrowserRouter>
 		<Routes>
+			<Route path="/" element={<MainPage />} />
 			<Route path="/chat" element={<ChatPage />} />
 			<Route path="/register" element={<Registration />} />
 			<Route path="/tournament" element={<TornamentGatherPage />} />

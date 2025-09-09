@@ -1,0 +1,146 @@
+/* 人数表示のデザイン強化 */
+.mainPage_memberInfo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.mainPage_memberCount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #222;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    margin-left: 4px;
+}
+.mainPage_joinButton {
+    background: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 32px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.15);
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    outline: none;
+    margin-top: 8px;
+}
+.mainPage_joinButton:hover {
+    background: #1769aa;
+    box-shadow: 0 4px 16px rgba(33,150,243,0.25);
+    transform: translateY(-2px) scale(1.04);
+}
+.mainPage_joinButton:active {
+    background: #0d47a1;
+    transform: scale(0.98);
+}
+:global(body) {
+    margin: 0;
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+.mainPage_leftBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 275px;
+    padding: 8px;
+    box-sizing: border-box;
+    background-color: #2d2d2d;
+    border-right: 3px solid #3c3c3c;
+    display: flex;
+    flex-direction: column;
+}
+.mainPage_logoContainer {
+    padding: 12px;
+    margin-bottom: 8px;
+}
+.mainPage_logo {
+    display: block;
+    width: 50px;
+    height: auto;
+}
+.mainPage_row {
+    display: flex;
+    align-items: center;
+    padding: 12px 30px;
+    border-radius: 9999px;
+    margin-bottom: 8px;
+    transition: background-color 0.2s ease-in-out;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.mainPage_row:hover {
+    background-color: #3c3c3c;
+}
+.mainPage_icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    filter: brightness(0) invert(1);
+}
+.mainPage_link {
+    text-decoration: none;
+    color: #e0e0e0;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 20px;
+}
+.mainPage_leftsideLow {
+    margin-top: auto;
+}
+.mainPage_center {
+    margin-left: 275px;
+    margin-right: 275px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+.mainPage_rightBar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 275px;
+    padding: 8px;
+    box-sizing: border-box;
+    background-color: #2d2d2d;
+    border-left: 3px solid #3c3c3c;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+.mainPage_filterContainer {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.mainPage_filterTabs {
+    display: flex;
+    border-bottom: 1px solid #3c3c3c;
+}
+.mainPage_tabButton {
+    flex: 1;
+    padding: 12px 0;
+    font-size: 15px;
+    font-family: inherit;
+    font-weight: 600;
+    color: #b0b0b0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
