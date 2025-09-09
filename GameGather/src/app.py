@@ -23,6 +23,15 @@ def init_db():
         email TEXT UNIQUE NOT NULL,
         password TEXT NOT NULL
     )''')
+    # トーナメント募集テーブル
+    c.execute('''CREATE TABLE IF NOT EXISTS tournaments (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        quest TEXT NOT NULL,
+        number INTEGER NOT NULL,
+        date TEXT NOT NULL,
+        time TEXT NOT NULL,
+        tags TEXT
+    )''')
     # テストユーザーがなければ追加
     c.execute('SELECT * FROM users WHERE email=?', ('test@test.com',))
     if not c.fetchone():
@@ -55,6 +64,42 @@ def get_items():
     items = [{'id': row[0], 'name': row[1]} for row in cur.fetchall()]
     conn.close()
     return jsonify({'items': items})
+
+# トーナメント募集作成API
+@app.route('/api/tournaments', methods=['POST'])
+def create_tournament():
+    data = request.get_json() or request.json
+    quest = data.get('quest')
+    number = data.get('number')
+    date = data.get('date')
+    time_ = data.get('time')
+    tags = data.get('tags')  # 配列 or カンマ区切り文字列
+    if not (quest and number and date and time_):
+        return jsonify({'error': 'quest, number, date, time are required'}), 400
+    # tagsは配列ならカンマ区切りに
+    if isinstance(tags, list):
+        tags = ','.join(tags)
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('INSERT INTO tournaments (quest, number, date, time, tags) VALUES (?, ?, ?, ?, ?)',
+              (quest, number, date, time_, tags))
+    conn.commit()
+    tournament_id = c.lastrowid
+    conn.close()
+    return jsonify({'result': 'success', 'tournament': {'id': tournament_id, 'quest': quest, 'number': number, 'date': date, 'time': time_, 'tags': tags}}), 201
+
+# トーナメント募集一覧取得API
+@app.route('/api/tournaments', methods=['GET'])
+def get_tournaments():
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('SELECT id, quest, number, date, time, tags FROM tournaments ORDER BY id DESC')
+    tournaments = [
+        {'id': row[0], 'quest': row[1], 'number': row[2], 'date': row[3], 'time': row[4], 'tags': row[5].split(',') if row[5] else []}
+        for row in c.fetchall()
+    ]
+    conn.close()
+    return jsonify({'tournaments': tournaments})
 
 
 from flask import Flask, request, jsonify

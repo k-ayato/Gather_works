@@ -69,6 +69,45 @@
     </div>
     <script src="../peges_ts_comrnent/iconslider.js"></script>
     <script src="../peges_ts_comrnent/tag_button.js"></script>
+    <script>
+        // 募集ボタンがクリックされたときの処理
+        document.querySelector('.buttun button').onclick = function() {
+            // 1. 入力値を取得
+            const quest = document.querySelector('input[name="quest"]').value;
+            const number = document.querySelector('input[name="number"]').value;
+            const date = document.querySelector('input[name="date"]').value;
+            const time = document.querySelector('input[name="event-time"]').value;
+            // タグ（activeなもの）
+            const tagBtns = document.querySelectorAll('.tag-button.active');
+            const tags = Array.from(tagBtns).map(btn => btn.textContent.trim());
+
+            // 2. APIに送信するデータを作成
+            const data = {
+                quest,
+                number,
+                date,
+                time,
+                tags
+            };
+
+            // 3. Flaskのトーナメント作成APIへPOSTリクエスト
+            fetch('http://localhost:5000/api/tournaments', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(result => {
+                if(result.result === 'success'){
+                    alert('トーナメント募集を登録しました');
+                }else{
+                    alert('登録に失敗しました: ' + (result.error || ''));
+                }
+            });
+        };
+    </script>
 </body>
 
 </html>
