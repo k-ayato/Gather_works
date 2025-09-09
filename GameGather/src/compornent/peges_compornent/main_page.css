@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #1f1f1f; /* ダークな背景色 */
-    color: #e0e0e0;             /* 全体の文字色を明るく設定 */
+    color: #e0e0e0;           /* 全体の文字色を明るく設定 */
 }
 
 /* 左サイドバー */
@@ -15,10 +15,279 @@ body {
     width: 275px;
     padding: 8px;
     box-sizing: border-box;
-
+    
     background-color: #2d2d2d;
     border-right: 3px solid #3c3c3c;
+    
+    display: flex;
+    flex-direction: column;
+}
 
+/* ロゴのコンテナ */
+.logo-container {
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+/* ロゴ画像自体 */
+.logo-container img.logo {
+    display: block;
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* メニューの各項目 */
+.leftBar li.row {
+    display: flex;
+    align-items: center;
+    padding: 12px 30px;
+    border-radius: 9999px;
+    margin-bottom: 8px;
+    transition: background-color 0.2s ease-in-out;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* ホバー時のスタイル */
+.leftBar li.row:hover {
+    background-color: #3c3c3c;
+}
+
+/* アイコン */
+.leftBar li.row img {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    filter: brightness(0) invert(1); /* アイコンを白くする */
+}
+
+/* リンクテキスト */
+.leftBar li.row a {
+    text-decoration: none;
+    color: #e0e0e0;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 20px;
+}
+
+/* 下部固定用のコンテナ */
+.leftside_low {
+    margin-top: auto; 
+}
+
+/* 中央エリア */
+.center {
+    margin-left: 275px; /* leftBarの幅 */
+    margin-right: 275px; /* rightBarの幅 */
+    padding: 24px 40px;
+    box-sizing: border-box;
+    /* 画面下部のゲームランチャーにコンテンツが隠れないように余白を追加 */
+    padding-bottom: 100px;
+    
+    /* ▼▼▼ 以下の3行を追記 ▼▼▼ */
+    display: grid;
+    grid-template-columns: repeat(minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* ゲーム募集カード全体のスタイル */
+.game-card {
+    /* grid-gapを使うため、margin-bottomは不要になる */
+    /* margin-bottom: 20px; */ /* ← この行をコメントアウトまたは削除 */
+
+    /* 以下は変更なし */
+    background-color: #2d2d2d;
+    border: 1px solid #3c3c3c;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 右サイドバー内の募集ボタンのコンテナ */
+.rightBar .recruit {
+    margin-top: auto;
+    padding: 0 16px 16px 16px; /* フィルターコンテナのpaddingと合わせる */
+}
+
+/* 右サイドバー内の募集ボタンのスタイル */
+.rightBar .btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background-color: #1d9bf0;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 9999px;
+    transition: background-color 0.2s ease-in-out;
+}
+.rightBar .btn:hover {
+    background-color: #1a8cd8;
+}
+
+/* --- 右サイドバー フィルターUI --- */
+
+.filter-container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.filter-tabs {
+    display: flex;
+    border-bottom: 1px solid #3c3c3c;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px 0;
+    font-size: 15px;
+    font-family: inherit;
+    font-weight: 600;
+    color: #b0b0b0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.tab-button:hover {
+    background-color: #3c3c3c;
+}
+
+.tab-button.active {
+    color: #1d9bf0;
+    border-bottom-color: #1d9bf0;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e0e0e0;
+}
+
+.filter-input,
+.filter-select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #1f1f1f;
+    border: 1px solid #3c3c3c;
+    color: #e0e0e0;
+    font-size: 15px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.filter-input::placeholder {
+    color: #707070;
+}
+
+/* --- ゲームランチャー (画面下部) --- */
+
+.game-launcher {
+    position: fixed;
+    bottom: 0;
+    left: 275px;
+    right: 275px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background-color: #2d2d2d;
+    border-top: 1px solid #3c3c3c;
+    padding: 12px 24px;
+    box-sizing: border-box;
+    height: 80px;
+}
+
+.launcher-icons-wrapper {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.game-icon-list {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.game-icon-item a {
+    display: block;
+    transition: transform 0.2s ease-in-out;
+}
+
+.game-icon-item a:hover {
+    transform: scale(1.1);
+}
+
+.game-icon-item img {
+    display: block;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%; /* アイコンをまん丸にする */
+    object-fit: cover;
+}
+
+.more-options-button {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #b0b0b0;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.more-options-button:hover {
+    background-color: #3c3c3c;
+    color: #e0e0e0;
+}
+
+.more-options-button svg {
+    display: block;
+}/* 全体共通 */
+body {
+    margin: 0;
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #1f1f1f; /* ダークな背景色 */
+    color: #e0e0e0;           /* 全体の文字色を明るく設定 */
+}
+
+/* 左サイドバー */
+.leftBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 275px;
+    padding: 8px;
+    box-sizing: border-box;
+    
+    background-color: #2d2d2d;
+    border-right: 3px solid #3c3c3c;
+    
     display: flex;
     flex-direction: column;
 }
@@ -80,133 +349,10 @@ body {
 .center {
     margin-left: 275px; /* leftBarの幅 */
     margin-right: 275px; /* rightBarの幅 */
-    padding: 20px;
-
-    /* カードをレスポンシブなグリッドで配置 */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px; /* カード間の隙間 */
-}
-
-/* 右サイドバー */
-.rightBar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 275px; /* leftBarと幅を統一 */
-    padding: 8px;
+    padding: 24px 40px;
     box-sizing: border-box;
-    background-color: #2d2d2d;
-    border-left: 3px solid #3c3c3c;
-    overflow-y: auto;
-
-    display: flex;
-    flex-direction: column;
-}
-
-/* --- 右サイドバー フィルターUI --- */
-
-/* フィルター全体のコンテナ */
-.filter-container {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px; /* 各フィルターグループの間の余白 */
-}
-
-/* フィルターのタブ */
-.filter-tabs {
-    display: flex;
-    border-bottom: 1px solid #3c3c3c;
-}
-
-.tab-button {
-    flex: 1; /* ボタンが均等に幅を持つようにする */
-    padding: 12px 0;
-    font-size: 15px;
-    font-family: inherit; /* bodyのフォントを継承 */
-    font-weight: 600;
-    color: #b0b0b0;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-}
-
-.tab-button:hover {
-    background-color: #3c3c3c;
-}
-
-/* 選択中のタブのスタイル */
-.tab-button.active {
-    color: #1d9bf0;
-    border-bottom-color: #1d9bf0;
-}
-
-
-/* 各フィルターグループ */
-.filter-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px; /* タイトルと入力欄の間の余白 */
-}
-
-.filter-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #e0e0e0;
-}
-
-/* テキスト入力欄とセレクトボックス共通のスタイル */
-.filter-input,
-.filter-select {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    background-color: #1f1f1f;
-    border: 1px solid #3c3c3c;
-    color: #e0e0e0;
-    font-size: 15px;
-    font-family: inherit;
-    box-sizing: border-box; /* paddingを含めて幅100%にする */
-}
-
-.filter-input::placeholder {
-    color: #707070;
-}
-
-/* 右サイドバー内の募集ボタンのコンテナ */
-.rightBar .recruit {
-    margin-top: auto;
-    padding-top: 12px; /* 上に他の要素が来た時用の余白 */
-}
-
-/* 右サイドバー内の募集ボタンのスタイル */
-.rightBar .btn {
-    display: block;
-    width: 100%;
-    padding: 16px;
-    background-color: #1d9bf0;
-    color: #ffffff;
-    text-align: center;
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: 700;
-    border-radius: 9999px;
-    transition: background-color 0.2s ease-in-out;
-}
-.rightBar .btn:hover {
-    background-color: #1a8cd8;
-}
-
-/* 中央エリアのスタイル */
-.center {
-    margin-left: 275px; /* 左サイドバーの幅 */
-    margin-right: 275px; /* 右サイドバーの幅 */
-    padding: 24px 40px; /* 上下と左右の余白 */
-    box-sizing: border-box;
+    /* 画面下部のゲームランチャーにコンテンツが隠れないように余白を追加 */
+    padding-bottom: 100px; 
 }
 
 /* ゲーム募集カード全体のスタイル */
@@ -224,7 +370,7 @@ body {
 /* カードヘッダー（タイトルと人数） */
 .card-header {
     display: flex;
-    justify-content: space-between; /* 両端に配置 */
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -237,7 +383,7 @@ body {
 .member-info {
     display: flex;
     align-items: center;
-    gap: 8px; /* アイコンとテキストの間の余白 */
+    gap: 8px;
     background-color: #1f1f1f;
     padding: 6px 12px;
     border-radius: 9999px;
@@ -260,19 +406,18 @@ body {
     line-height: 1.6;
 }
 
-
 /* カードフッター（タグとボタン） */
 .card-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 8px; /* 上の要素との間に少し余白を追加 */
+    margin-top: 8px;
 }
 
 /* タグのコンテナ */
 .tags {
     display: flex;
-    flex-wrap: wrap; /* タグが多い場合に折り返す */
+    flex-wrap: wrap;
     gap: 8px;
 }
 
@@ -302,71 +447,168 @@ body {
     background-color: #1a8cd8;
 }
 
-/* --- ゲームランチャー --- */
+/* 右サイドバー */
+.rightBar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 275px;
+    padding: 8px;
+    box-sizing: border-box;
+    background-color: #2d2d2d;
+    border-left: 3px solid #3c3c3c;
+    overflow-y: auto;
+    
+    display: flex;
+    flex-direction: column;
+}
 
-/* ランチャー全体のコンテナ */
+/* 右サイドバー内の募集ボタンのコンテナ */
+.rightBar .recruit {
+    margin-top: auto;
+    padding: 0 16px 16px 16px; /* フィルターコンテナのpaddingと合わせる */
+}
+
+/* 右サイドバー内の募集ボタンのスタイル */
+.rightBar .btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background-color: #1d9bf0;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 700;
+    border-radius: 9999px;
+    transition: background-color 0.2s ease-in-out;
+}
+.rightBar .btn:hover {
+    background-color: #1a8cd8;
+}
+
+/* --- 右サイドバー フィルターUI --- */
+
+.filter-container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.filter-tabs {
+    display: flex;
+    border-bottom: 1px solid #3c3c3c;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px 0;
+    font-size: 15px;
+    font-family: inherit;
+    font-weight: 600;
+    color: #b0b0b0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.tab-button:hover {
+    background-color: #3c3c3c;
+}
+
+.tab-button.active {
+    color: #1d9bf0;
+    border-bottom-color: #1d9bf0;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e0e0e0;
+}
+
+.filter-input,
+.filter-select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #1f1f1f;
+    border: 1px solid #3c3c3c;
+    color: #e0e0e0;
+    font-size: 15px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.filter-input::placeholder {
+    color: #707070;
+}
+
+/* --- ゲームランチャー (画面下部) --- */
+
 .game-launcher {
-    position: fixed; /* 画面下部に固定 */
+    position: fixed;
     bottom: 0;
-    /* .center のマージンと合わせる */
     left: 275px;
     right: 275px;
-
     display: flex;
     align-items: center;
     gap: 16px;
-
-    background-color: #2d2d2d; /* サイドバーと同じ背景色 */
-    border-top: 1px solid #3c3c3c; /* 上境界線 */
+    background-color: #2d2d2d;
+    border-top: 1px solid #3c3c3c;
     padding: 12px 24px;
     box-sizing: border-box;
-    height: 80px; /* ランチャーの高さ */
+    height: 80px;
 }
 
-/* アイコンリストを囲むラッパー */
 .launcher-icons-wrapper {
-    flex-grow: 1; /* 利用可能なスペースをすべて埋める */
-    overflow: hidden; /* はみ出たアイコンを非表示にする */
+    flex-grow: 1;
+    overflow: hidden;
 }
 
-/* アイコンリスト */
 .game-icon-list {
     display: flex;
     align-items: center;
-    gap: 16px; /* アイコン間の余白 */
-
-    /* flexコンテナが折り返さないようにする */
+    gap: 16px;
     flex-wrap: nowrap;
-
-    /* デフォルトのリストスタイルをリセット */
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-/* 各アイコンのスタイル */
 .game-icon-item a {
     display: block;
     transition: transform 0.2s ease-in-out;
 }
+
 .game-icon-item a:hover {
-    transform: scale(1.1); /* ホバー時に少し拡大 */
+    transform: scale(1.1);
 }
+
 .game-icon-item img {
     display: block;
     width: 52px;
     height: 52px;
-    border-radius: 50%; /* 丸くする */
-    object-fit: cover; /* 画像がコンテナに収まるように調整 */
+    border-radius: 50%; /* アイコンをまん丸にする */
+    object-fit: cover;
 }
 
-/* 三点リーダーのボタン */
 .more-options-button {
-    flex-shrink: 0; /* ボタンが縮まないようにする */
+    flex-shrink: 0;
     background: none;
     border: none;
     cursor: pointer;
-    color: #b0b0b0; /* アイコンの色 */
+    color: #b0b0b0;
     padding: 8px;
     border-radius: 50%;
     display: flex;
@@ -379,6 +621,7 @@ body {
     background-color: #3c3c3c;
     color: #e0e0e0;
 }
+
 .more-options-button svg {
     display: block;
 }
